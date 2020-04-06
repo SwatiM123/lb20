@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -22,6 +24,7 @@ public class LoginTests {
 	private LoginPOM loginPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
+	JavascriptExecutor jse;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException {
@@ -47,9 +50,35 @@ public class LoginTests {
 	}
 	@Test
 	public void validLoginTest() {
-		loginPOM.sendUserName("admin");
-		loginPOM.sendPassword("admin@123");
-		loginPOM.clickLoginBtn(); 
+		//loginPOM.sendUserName("admin");
+		//loginPOM.sendPassword("admin@123");
+		//loginPOM.clickLoginBtn(); 
+		
+		Boolean flag = loginPOM.LoginUser("admin","admin@123");
+		
+		if(flag)
+		{
+			System.out.println("login successful");
+		}
+		else
+		{
+			System.out.println("login unsuccessful");
+		}
 		screenShot.captureScreenShot("First");
+		try {
+			clickSales();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void clickSales() throws InterruptedException{
+		//driver.findElement(By.id("sale")).sendKeys("Sales");
+		driver.findElement(By.id("sale")).click();
+		//Thread.sleep(5000);
+		//jse.executeScript("Scroll(0,5000)");
+		driver.findElement(By.xpath("//class[contains(text(), 'Returns')]")).click();
+		//driver.findElement(By.className("active open")).sendKeys("Returns");
 	}
 }

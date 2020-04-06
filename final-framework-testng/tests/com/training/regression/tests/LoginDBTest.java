@@ -55,16 +55,16 @@ public class LoginDBTest {
 
 
 	@Test(dataProvider = "db-inputs", dataProviderClass = LoginDataProviders.class)
-	public void loginDBTest(String userName, String password) {
+	public void loginDBTest(String Username, String password) {
 		// for demonstration 
 //		genericMethods.getElement("login", "id"); 
 				
-		loginPOM.sendUserName(userName);
+		loginPOM.sendUserName(Username);
 		
 		loginPOM.sendPassword(password);
-		loginPOM.clickLoginBtn();
+		//loginPOM.clickLoginBtn();
 		
-		screenShot.captureScreenShot(userName);
+		screenShot.captureScreenShot(Username);
 
 	}
 
