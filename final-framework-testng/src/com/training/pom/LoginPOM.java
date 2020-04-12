@@ -9,7 +9,7 @@ public class LoginPOM {
 	private WebDriver driver; 
 	
 	public LoginPOM(WebDriver driver) {
-		this.driver = driver; 
+		this.setDriver(driver); 
 		PageFactory.initElements(driver, this);
 	}
 	
@@ -45,13 +45,21 @@ public class LoginPOM {
 			sendPassword(Password);
 			clickLoginBtn();
 			return true;
-			
-		}
 		
-		catch(Exception ex)
+		}
+		catch(
+				Exception ex)
 		{
 			System.out.println(ex.getMessage());
 			return false;
 		}
+	}
+
+	public WebDriver getDriver() {
+		return driver;
+	}
+
+	public void setDriver(WebDriver driver) {
+		this.driver = driver;
 	}
 }

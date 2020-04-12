@@ -65,20 +65,8 @@ public class LoginTests {
 			System.out.println("login unsuccessful");
 		}
 		screenShot.captureScreenShot("First");
-		try {
-			clickSales();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 	
-	public void clickSales() throws InterruptedException{
-		//driver.findElement(By.id("sale")).sendKeys("Sales");
-		driver.findElement(By.id("sale")).click();
-		//Thread.sleep(5000);
-		//jse.executeScript("Scroll(0,5000)");
-		driver.findElement(By.xpath("//class[contains(text(), 'Returns')]")).click();
-		//driver.findElement(By.className("active open")).sendKeys("Returns");
-	}
+
 }
